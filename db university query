@@ -1,0 +1,56 @@
+-- Primo
+
+select surname, name
+from teachers t 
+order by surname, name asc;
+
+select name, surname
+from teachers t 
+order by name, surname asc;
+
+-- Secondo
+
+select *
+from courses c 
+where c.cfu >= 12;
+
+-- Terzo
+
+select *
+from students s 
+where year(date_of_birth) = 1990; 
+
+-- Quarto
+
+select *
+from courses c  
+where c.period = 'I semestre' and c.`year` = 1;
+
+-- Quinto
+
+select count(d.id) as numeroDipartimenti
+from departments d 
+
+-- Sesto
+
+select count(*)
+from teachers t 
+where t.surname like '%e';
+
+-- Settimo
+
+SELECT name, surname, fiscal_code
+FROM students s
+WHERE s.degree_id = 53
+ORDER BY name  ASC;
+
+-- Ottavo
+
+select *
+from degrees d 
+join departments d2 
+on d.department_id = d2.id 
+where d.`level` = 'Magistrale' and d2.name = 'Dipartimento di Neuroscienze';
+
+
+
