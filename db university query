@@ -39,10 +39,12 @@ where t.surname like '%e';
 
 -- Settimo
 
-SELECT name, surname, fiscal_code
-FROM students s
-WHERE s.degree_id = 53
-ORDER BY name  ASC;
+select s.name, s.surname, s.fiscal_code
+from students s
+join degrees d 
+on s.degree_id = d.id 
+where d.name = 'Corso di Laurea in Economia'
+order by name asc;
 
 -- Ottavo
 
@@ -51,6 +53,34 @@ from degrees d
 join departments d2 
 on d.department_id = d2.id 
 where d.`level` = 'Magistrale' and d2.name = 'Dipartimento di Neuroscienze';
+
+-- Bonus 1
+
+select s.name, s.surname
+from courses c
+join exams e 
+on c.id = e.course_id 
+join exam_student es 
+on e.id = es.exam_id 
+join students s 
+on es.student_id = s.id 
+where c.name = 'maxime laboriosam nostrum' and es.vote >= '18';
+
+-- Bonus 2
+
+select t.*
+from departments d 
+join degrees d2 
+on d.id = d2.department_id
+join courses c 
+on d2.id = c.degree_id 
+join course_teacher ct 
+on c.id = ct.course_id 
+join teachers t 
+on ct.teacher_id  = t.id
+where d.name = 'Dipartimento di Matematica';
+
+
 
 
 
